@@ -5,16 +5,16 @@
 
   <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
+    android:layout_height="100dp"
     android:layout_margin="4dp"
-    android:clickable="true"
-    android:focusable="true"
     android:background="?attr/selectableItemBackground"
-    android:layout_height="100dp">
+    android:clickable="true"
+    android:focusable="true">
 
     <ImageView
       android:id="@+id/characterImage"
       android:layout_width="80dp"
-      android:layout_height="100dp"
+      android:layout_height="0dp"
       android:contentDescription="@string/character_image_breaking_bad_description"
       android:scaleType="centerCrop"
       app:characterImage="@{character.image}"
@@ -29,7 +29,8 @@
       style="@style/TextAppearance.AppCompat.Title"
       android:layout_width="0dp"
       android:layout_height="wrap_content"
-      android:layout_marginStart="16dp"
+      android:layout_marginEnd="4dp"
+      android:layout_marginStart="4dp"
       android:ellipsize="end"
       android:maxLines="1"
       android:text="@{character.name}"
@@ -44,12 +45,12 @@
       android:id="@+id/nickName"
       android:layout_width="0dp"
       android:layout_height="wrap_content"
-      android:layout_marginTop="16dp"
+      android:layout_marginTop="8dp"
       android:ellipsize="end"
       android:maxLines="1"
       android:text="@{character.nickname}"
       app:layout_constraintBottom_toBottomOf="parent"
-      app:layout_constraintEnd_toStartOf="@+id/guideline5"
+      app:layout_constraintEnd_toEndOf="@+id/characterName"
       app:layout_constraintStart_toStartOf="@+id/characterName"
       app:layout_constraintTop_toBottomOf="@+id/characterName"
       tools:text="Heisenberg" />
