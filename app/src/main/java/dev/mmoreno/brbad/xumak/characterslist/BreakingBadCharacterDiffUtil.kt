@@ -1,4 +1,4 @@
-package dev.mmoreno.brbad.xumak.fakedata
+package dev.mmoreno.brbad.xumak.characterslist
 
 import androidx.recyclerview.widget.DiffUtil
 import dev.mmoreno.brbad.xumak.db.entities.BreakingBadCharacterEntity

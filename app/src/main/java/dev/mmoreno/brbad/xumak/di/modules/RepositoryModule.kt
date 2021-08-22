@@ -2,7 +2,7 @@ package dev.mmoreno.brbad.xumak.di.modules
 
 import androidx.paging.ExperimentalPagingApi
 import dev.mmoreno.brbad.xumak.paging.BreakingBadRemoteMediator
-import dev.mmoreno.brbad.xumak.paging.BreakingBadRepository
+import dev.mmoreno.brbad.xumak.repositories.BreakingBadRepository
 import org.koin.dsl.module
 
 @ExperimentalPagingApi

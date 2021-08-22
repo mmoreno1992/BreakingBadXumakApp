@@ -1,9 +1,10 @@
-package dev.mmoreno.brbad.xumak.paging
+package dev.mmoreno.brbad.xumak.repositories
 
 import androidx.lifecycle.LiveData
 import androidx.paging.*
 import dev.mmoreno.brbad.xumak.db.BreakingBadDatabase
 import dev.mmoreno.brbad.xumak.db.entities.BreakingBadCharacterEntity
+import dev.mmoreno.brbad.xumak.paging.BreakingBadRemoteMediator
 
 class BreakingBadRepository @ExperimentalPagingApi constructor(
   database: BreakingBadDatabase,

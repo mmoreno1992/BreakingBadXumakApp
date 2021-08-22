@@ -1,15 +1,13 @@
-package dev.mmoreno.brbad.xumak.fakedata
+package dev.mmoreno.brbad.xumak.characterslist
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.like.LikeButton
 import com.like.OnLikeListener
 import dev.mmoreno.brbad.xumak.databinding.ListItemBreakingBadCharacterBinding
 import dev.mmoreno.brbad.xumak.db.entities.BreakingBadCharacterEntity
-import org.koin.core.component.getScopeId
 
 /**
  * Paging adapter that gets chunks of data (pages)

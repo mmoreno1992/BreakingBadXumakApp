@@ -1,4 +1,4 @@
-package dev.mmoreno.brbad.xumak
+package dev.mmoreno.brbad.xumak.characterslist
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,9 +10,9 @@ import androidx.paging.ExperimentalPagingApi
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.SimpleItemAnimator
+import dev.mmoreno.brbad.xumak.R
+import dev.mmoreno.brbad.xumak.SharedViewModel
 import dev.mmoreno.brbad.xumak.databinding.FragmentCharactersListBinding
-import dev.mmoreno.brbad.xumak.fakedata.BreakingBadCharactersPagingAdapter
-import dev.mmoreno.brbad.xumak.fakedata.SharedViewModel
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 
@@ -41,7 +41,7 @@ class CharactersListFragment : Fragment() {
   override fun onCreateView(
     inflater: LayoutInflater, container: ViewGroup?,
     savedInstanceState: Bundle?
-  ): View? {
+  ): View {
     _binding = FragmentCharactersListBinding.inflate(inflater, container, false)
     return binding.root
   }
