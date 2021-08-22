@@ -6,7 +6,7 @@ import dev.mmoreno.brbad.xumak.db.BreakingBadDatabase
 import dev.mmoreno.brbad.xumak.db.entities.BreakingBadCharacterEntity
 
 class BreakingBadRepository @ExperimentalPagingApi constructor(
-  private val database: BreakingBadDatabase,
+  database: BreakingBadDatabase,
   private val breakingBadRemoteMediator: BreakingBadRemoteMediator
 ) {
 

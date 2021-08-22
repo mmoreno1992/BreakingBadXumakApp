@@ -13,5 +13,6 @@ class BreakingBadCharacterEntity(
   val image: String,
   @ColumnInfo(name = "is_favorite")
   val isFavorite: Boolean = false,
-  val offset: Int
+  @ColumnInfo(name = "custom_offset")
+  val customOffset: Int
 )

@@ -15,7 +15,7 @@ fun List<BreakingBadCharacterResponse>.toBreakingBadCharacterEntities(offset: In
       nickname = character.nickname,
       image = character.img,
       isFavorite = false,
-      offset = offset + index
+      customOffset = offset + index
     )
   }
 

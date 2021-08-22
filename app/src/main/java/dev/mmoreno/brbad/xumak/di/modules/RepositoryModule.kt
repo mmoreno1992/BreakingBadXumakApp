@@ -13,6 +13,6 @@ val repositoryModule = module {
   }
 
   factory {
-    BreakingBadRemoteMediator()
+    BreakingBadRemoteMediator(get(), get())
   }
 }
