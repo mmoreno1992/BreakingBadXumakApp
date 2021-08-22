@@ -6,6 +6,9 @@ import android.view.MenuItem
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import dev.mmoreno.brbad.xumak.databinding.ActivityMainBinding
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.withContext
 
 class MainActivity : AppCompatActivity() {
   lateinit var binding: ActivityMainBinding
@@ -14,6 +17,8 @@ class MainActivity : AppCompatActivity() {
     binding = ActivityMainBinding.inflate(layoutInflater)
     setContentView(binding.root)
     setSupportActionBar(binding.toolbar)
+
+    //delay(10000)
   }
 
   override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -31,9 +36,15 @@ class MainActivity : AppCompatActivity() {
     }
 
   private fun showAboutDialog() {
-    AlertDialog.Builder(this)
+
+    /*AlertDialog.Builder(this)
       .setTitle(getString(R.string.app_name))
       .setMessage(getString(R.string.about_dialog_message, BuildConfig.VERSION_NAME))
-      .show()
+      .show()*/
+  }
+
+  suspend fun getData():String = withContext(Dispatchers.IO){
+    delay(1500)
+    ""
   }
 }

@@ -14,7 +14,7 @@
     <ImageView
       android:id="@+id/characterImage"
       android:layout_width="80dp"
-      android:layout_height="0dp"
+      android:layout_height="100dp"
       android:contentDescription="@string/character_image_breaking_bad_description"
       android:scaleType="centerCrop"
       app:characterImage="@{character.image}"
@@ -82,7 +82,7 @@
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toStartOf="@+id/guideline5"
       app:layout_constraintTop_toTopOf="parent"
-      app:liked="true" />
+      app:liked="@{character.favorite}" />
 
   </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -90,6 +90,6 @@
 
     <variable
       name="character"
-      type="dev.mmoreno.brbad.xumak.fakedata.BreakingBadCharacter" />
+      type="dev.mmoreno.brbad.xumak.db.entities.BreakingBadCharacterEntity" />
   </data>
 </layout>

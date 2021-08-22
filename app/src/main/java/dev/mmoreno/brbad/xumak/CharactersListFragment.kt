@@ -4,44 +4,79 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.activityViewModels
+import androidx.paging.ExperimentalPagingApi
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import dev.mmoreno.brbad.xumak.fakedata.BreakingBadCharactersAdapter
+import androidx.recyclerview.widget.SimpleItemAnimator
+import dev.mmoreno.brbad.xumak.databinding.FragmentCharactersListBinding
+import dev.mmoreno.brbad.xumak.fakedata.BreakingBadCharactersPagingAdapter
 import dev.mmoreno.brbad.xumak.fakedata.SharedViewModel
+import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 
+//Annotation necessary in order to use the Paging library 3.0
+@ExperimentalPagingApi
 class CharactersListFragment : Fragment() {
 
-  val viewModel: SharedViewModel by activityViewModels()
-  val rvCharactersAdapter: BreakingBadCharactersAdapter by lazy {
-    BreakingBadCharactersAdapter()
-  }
+  //Injecting my viewmodel using Koin
+  private val viewModel: SharedViewModel by sharedViewModel()
 
-  override fun onCreate(savedInstanceState: Bundle?) {
-    super.onCreate(savedInstanceState)
+  private var _binding: FragmentCharactersListBinding? = null
+
+  //Syntax used in order to avoid the use of the safe operator (?.)
+  private val binding get() = _binding!!
+
+  //Special type of Adapter that works integrated with the Paging components
+  val rvCharactersAdapter: BreakingBadCharactersPagingAdapter by lazy {
+    BreakingBadCharactersPagingAdapter { characterId, isFavorite ->
+      viewModel.setBreakingBadCharacterAsFavorite(characterId, isFavorite)
+      if (isFavorite) {
+        Toast.makeText(activity, getString(R.string.marked_as_favorite), Toast.LENGTH_SHORT).show()
+      }
+    }
   }
 
   override fun onCreateView(
     inflater: LayoutInflater, container: ViewGroup?,
     savedInstanceState: Bundle?
   ): View? {
-    return inflater.inflate(R.layout.fragment_characters_list, container, false)
+    _binding = FragmentCharactersListBinding.inflate(inflater, container, false)
+    return binding.root
   }
 
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
     super.onViewCreated(view, savedInstanceState)
-    val rv = view.findViewById<RecyclerView>(R.id.rvCharacters)
-    rv.apply {
-      adapter = rvCharactersAdapter
-      layoutManager = LinearLayoutManager(view.context)
-      addItemDecoration(DividerItemDecoration(view.context, DividerItemDecoration.VERTICAL))
-    }
-    viewModel.charactersLiveData.observe(viewLifecycleOwner, {
-      rvCharactersAdapter.submitList(it)
+    setupRv()
+    setupObservers()
+  }
+
+  private fun setupObservers() {
+    viewModel.getCharactersList().observe(viewLifecycleOwner, {
+      rvCharactersAdapter.submitData(lifecycle, it)
     })
+  }
+
+  private fun setupRv() {
+    binding.rvCharacters.apply {
+      adapter = rvCharactersAdapter
+      layoutManager = LinearLayoutManager(this.context)
+      addItemDecoration(DividerItemDecoration(this.context, DividerItemDecoration.VERTICAL))
+    }
+    val animator = binding.rvCharacters.itemAnimator
+    if (animator is SimpleItemAnimator) {
+      animator.supportsChangeAnimations = false
+    }
+  }
+
+  /**
+   * Get rid of the reference if you want to avoid
+   * memory leaks
+   */
+  override fun onDestroyView() {
+    super.onDestroyView()
+    _binding = null
   }
 
 }
