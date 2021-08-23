@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools">
+
+  <FrameLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/transparent"
+    tools:context=".characterslist.image.CharacterImageFragment">
+
+    <ImageView
+      android:id="@+id/characterImage"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:contentDescription="@string/character_image_breaking_bad_description"
+      android:scaleType="centerCrop"
+      app:characterImage="@{urlImage}" />
+
+    <ImageButton
+      android:id="@+id/closeButton"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_gravity="end|top"
+      android:layout_marginEnd="0dp"
+      android:layout_marginTop="0dp"
+      android:contentDescription="@string/close_character_image_dialog"
+      android:src="@drawable/ic_close" />
+
+  </FrameLayout>
+
+  <data>
+    <variable
+      name="urlImage"
+      type="String" />
+  </data>
+</layout>

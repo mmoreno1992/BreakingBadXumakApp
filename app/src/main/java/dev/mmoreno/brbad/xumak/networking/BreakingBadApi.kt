@@ -7,7 +7,6 @@ import retrofit2.http.Query
 
 /**
  * Interface mapping breaking bad api endpoints
- * Base URL @Constants.URL_SERVICE
  */
 interface BreakingBadApi {
 
@@ -15,7 +14,7 @@ interface BreakingBadApi {
   @Headers("Accept: application/json")
   suspend fun getCharacters(
     @Query("offset") offset: Int,
-    @Query("limit") limit: Int = 50
+    @Query("limit") limit: Int
   ): List<BreakingBadCharacterResponse>
 
 }

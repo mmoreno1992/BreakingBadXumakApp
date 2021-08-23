@@ -2,6 +2,7 @@ package dev.mmoreno.brbad.xumak.characterslist
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.like.LikeButton
@@ -14,7 +15,7 @@ import dev.mmoreno.brbad.xumak.db.entities.BreakingBadCharacterEntity
  * Uses dataBinding
  */
 class BreakingBadCharactersPagingAdapter(
-  val onIsFavoriteButtonClick: (characterId: Int, isFavorite: Boolean) -> Unit
+  val listener: BreakingBadCharacterInteractionListener
 ) :
   PagingDataAdapter<BreakingBadCharacterEntity, BreakingBadCharactersPagingAdapter.ViewHolder>(
     BreakingBadCharacterDiffUtil()
@@ -39,29 +40,36 @@ class BreakingBadCharactersPagingAdapter(
         object : OnLikeListener {
           override fun liked(likeButton: LikeButton?) {
             getItem(bindingAdapterPosition)?.let { character ->
-              onIsFavoriteButtonClick(character.id, true)
+              listener.onClickFavoriteButton(character.id, true)
             }
           }
 
           override fun unLiked(likeButton: LikeButton?) {
             getItem(bindingAdapterPosition)?.let { character ->
-              onIsFavoriteButtonClick(character.id, false)
+              listener.onClickFavoriteButton(character.id, false)
             }
           }
         }
       )
+
+      binding.characterImage.setOnClickListener {
+        getItem(bindingAdapterPosition)?.let { character ->
+          listener.onClickCharacterImage(character.image)
+        }
+      }
     }
 
     fun bind(item: BreakingBadCharacterEntity?) {
-      item?.let {
-        binding.character = item
+      item?.let { character ->
+        binding.character = character
         binding.executePendingBindings()
       }
     }
   }
 
-  fun interface BreakingBadCharacterInteractionListener {
-    fun onClickFavoriteButton(isFavorite: Boolean)
+  interface BreakingBadCharacterInteractionListener {
+    fun onClickFavoriteButton(characterId: Int, isFavorite: Boolean)
+    fun onClickCharacterImage(urlImage: String)
   }
 }
 

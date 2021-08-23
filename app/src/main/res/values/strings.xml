@@ -1,10 +1,13 @@
 <resources>
   <string name="app_name">BreakingBadXumakApp</string>
-  <!-- TODO: Remove or change this placeholder text -->
-  <string name="hello_blank_fragment">Hello blank fragment</string>
   <string name="characters_list_fragment_title">Breaking Bad Characters</string>
   <string name="character_image_breaking_bad_description">The image of the breaking bad character.</string>
   <string name="about_label">About</string>
   <string name="about_dialog_message">Intermediate Android Developer, Version: %1$s.</string>
   <string name="marked_as_favorite">Marked as favorite!</string>
+  <string name="close_character_image_dialog">Close Character Image Dialog</string>
+  <string name="retry">Retry</string>
+  <string name="no_characters_cached">There are no characters cached :(</string>
+  <string name="network_status_online">YOU\'RE ONLINE</string>
+  <string name="network_status_offline">YOU\'RE OFFLINE</string>
 </resources>

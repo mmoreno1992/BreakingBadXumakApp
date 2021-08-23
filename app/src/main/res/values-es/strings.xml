@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="app_name">BreakingBadXumakApp</string>
+  <string name="characters_list_fragment_title">Personajes Breaking Bad</string>
+  <string name="character_image_breaking_bad_description">Imagen del personaje de Breaking Bad.</string>
+  <string name="about_label">Acerca de</string>
+  <string name="about_dialog_message">Desarrollador Android Intermedio, Version: %1$s.</string>
+  <string name="marked_as_favorite">¡Marcado como favorito!</string>
+  <string name="close_character_image_dialog">Cerrar el dialog con la imagen del personaje</string>
+  <string name="retry">Re-intentar</string>
+  <string name="no_characters_cached">No hay personajes guardados :(</string>
+  <string name="network_status_online">EN LINEA</string>
+  <string name="network_status_offline">FUERA DE LINEA</string>
+</resources>
