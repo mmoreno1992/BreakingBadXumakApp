@@ -24,4 +24,7 @@ abstract class BreakingBadCharacterDao {
 
   @Query("Select IFNULL(MAX(custom_offset),0) From Breaking_Bad_Character_Table")
   abstract suspend fun getMaxOffset(): Int
+
+  @Query("Select * From Breaking_Bad_Character_Table")
+  abstract suspend fun getAllCharacters(): List<BreakingBadCharacterEntity>
 }
