@@ -5,9 +5,26 @@
   android:id="@+id/navigation_graph"
   app:startDestination="@id/charactersListFragment">
 
+  <dialog
+    android:id="@+id/characterImageFragment"
+    android:name="dev.mmoreno.brbad.xumak.characterslist.image.CharacterImageFragment"
+    android:label="fragment_character_image"
+    tools:layout="@layout/fragment_character_image" >
+    <argument
+      android:name="urlImage"
+      app:argType="string" />
+  </dialog>
   <fragment
     android:id="@+id/charactersListFragment"
-    android:name="dev.mmoreno.brbad.xumak.CharactersListFragment"
+    android:name="dev.mmoreno.brbad.xumak.characterslist.CharactersListFragment"
     android:label="@string/characters_list_fragment_title"
-    tools:layout="@layout/fragment_characters_list" />
+    tools:layout="@layout/fragment_characters_list">
+    <action
+      android:id="@+id/action_charactersListFragment_to_characterImageFragment"
+      app:destination="@id/characterImageFragment"
+      app:enterAnim="@android:anim/slide_in_left"
+      app:exitAnim="@android:anim/slide_out_right"
+      app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+      app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+  </fragment>
 </navigation>

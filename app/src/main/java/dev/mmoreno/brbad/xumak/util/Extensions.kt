@@ -1,5 +1,9 @@
 package dev.mmoreno.brbad.xumak.util
 
+import android.content.res.Resources
+import android.graphics.Rect
+import android.view.ViewGroup
+import androidx.fragment.app.DialogFragment
 import dev.mmoreno.brbad.xumak.db.entities.BreakingBadCharacterEntity
 import dev.mmoreno.brbad.xumak.networking.model.BreakingBadCharacterResponse
 
@@ -15,7 +19,16 @@ fun List<BreakingBadCharacterResponse>.toBreakingBadCharacterEntities(offset: In
       nickname = character.nickname,
       image = character.img,
       isFavorite = false,
-      offset = offset + index
+      customOffset = offset + index
     )
   }
+
+
+fun DialogFragment.setWidthPercent(percentage: Int) {
+  val percent = percentage.toFloat() / 100
+  val dm = Resources.getSystem().displayMetrics
+  val rect = dm.run { Rect(0, 0, widthPixels, heightPixels) }
+  val percentWidth = rect.width() * percent
+  dialog?.window?.setLayout(percentWidth.toInt(), ViewGroup.LayoutParams.WRAP_CONTENT)
+}
 
