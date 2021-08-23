@@ -9,7 +9,7 @@ import dev.mmoreno.brbad.xumak.R
 const val DATABASE_NAME = "breaking_bad_db.db"
 const val URL_SERVICE = "https://www.breakingbadapi.com/api/"
 const val URL_BREAKING_BAD = "URL_BREAKING_BAD"
-const val READ_TIME_OUT = 30L
+const val READ_TIME_OUT = 10L
 
 
 // Options for loading images with Glide
