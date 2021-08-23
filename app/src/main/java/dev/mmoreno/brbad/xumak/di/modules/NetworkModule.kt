@@ -1,5 +1,6 @@
 package dev.mmoreno.brbad.xumak.di.modules
 
+import dev.mmoreno.brbad.xumak.BuildConfig
 import dev.mmoreno.brbad.xumak.networking.BreakingBadApi
 import dev.mmoreno.brbad.xumak.util.READ_TIME_OUT
 import dev.mmoreno.brbad.xumak.util.URL_BREAKING_BAD
@@ -18,18 +19,20 @@ val networkModule = module {
     Retrofit.Builder()
       .baseUrl(get<String>(qualifier = named(URL_BREAKING_BAD)))
       .client(get())
-      //.addConverterFactory(MoshiConverterFactory.create())
       .addConverterFactory(GsonConverterFactory.create())
       .build()
   }
 
   single {
-    OkHttpClient.Builder()
+    val client = OkHttpClient.Builder()
       .readTimeout(READ_TIME_OUT, TimeUnit.SECONDS)
-      .addInterceptor(HttpLoggingInterceptor().apply {
+
+    if (BuildConfig.DEBUG) {
+      client.addInterceptor(HttpLoggingInterceptor().apply {
         level = HttpLoggingInterceptor.Level.BODY
       })
-      .build()
+    }
+    client.build()
   }
 
   single {
