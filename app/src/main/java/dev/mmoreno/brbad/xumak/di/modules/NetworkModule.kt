@@ -19,7 +19,6 @@ val networkModule = module {
     Retrofit.Builder()
       .baseUrl(get<String>(qualifier = named(URL_BREAKING_BAD)))
       .client(get())
-      //.addConverterFactory(MoshiConverterFactory.create())
       .addConverterFactory(GsonConverterFactory.create())
       .build()
   }
